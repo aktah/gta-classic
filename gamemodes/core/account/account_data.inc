@@ -1,6 +1,6 @@
 #include <YSI_Coding\y_hooks>
 
-enum ACC_DATA {
+enum PLAYER_DATA {
     ID,
     Name[MAX_PLAYER_NAME],
     Password[129],
@@ -8,10 +8,10 @@ enum ACC_DATA {
     TimeReg[9],
     IP[16]
 };
-new accData[MAX_PLAYERS][ACC_DATA];
+new playerData[MAX_PLAYERS][PLAYER_DATA];
 
 hook OnPlayerConnect(playerid) {
-	static const empty_player[ACC_DATA];
-	accData[playerid] = empty_player;
+	static const empty_player[PLAYER_DATA];
+	playerData[playerid] = empty_player;
     return 1;
 }

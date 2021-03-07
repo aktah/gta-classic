@@ -1,6 +1,6 @@
 #include <YSI_Coding\y_hooks>
 
-stock Account_CreateShow(playerid) {
+stock Account_PromptRegister(playerid) {
     static 
         const caption[] = 
         "\
@@ -21,7 +21,7 @@ public Account_InsertToDatabase(playerid, dialogid, response, listitem, string:i
     if (response) {
         new 
             buffer[129],
-            query[270];
+            query[300];
 
         WP_Hash(buffer, sizeof(buffer), inputtext);
         mysql_format(MySQL_GetHandle(), query, sizeof query, 
@@ -37,8 +37,6 @@ public Account_InsertToDatabase(playerid, dialogid, response, listitem, string:i
             Player_Ip(playerid)
         );
         mysql_tquery(MySQL_GetHandle(), query, "Account_Create", "d", playerid);
-
-        printf(query);
     }
     else {
         Kick(playerid);
@@ -49,7 +47,7 @@ public Account_InsertToDatabase(playerid, dialogid, response, listitem, string:i
 forward Account_Create(playerid);
 public Account_Create(playerid)
 {
-	accData[playerid][ID] = cache_insert_id();
-	Account_LoginShow(playerid);
+	Player_SetAccountID(playerid, cache_insert_id());
+	Account_PromptLogin(playerid);
 	return 1;
 }

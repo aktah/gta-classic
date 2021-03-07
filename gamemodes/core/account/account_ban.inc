@@ -96,17 +96,20 @@ public OnPlayerPrepareToConnect(playerid) {
 forward OnPlayerConnected(playerid);
 public OnPlayerConnected(playerid) {
     new 
-        rows;
+        rows,
+        playerUID;
 
     cache_get_row_count(rows);
     
     if (rows) {
-        cache_get_value_name_int(0, "u_id", accData[playerid][ID]);
+        cache_get_value_name_int(0, "u_id", playerUID);
 
-        Account_LoginShow(playerid);
+        Player_SetAccountID(playerid, playerUID);
+
+        Account_PromptLogin(playerid);
     } 
     else {
-        Account_CreateShow(playerid);
+        Account_PromptRegister(playerid);
     }
     return 1;
 }

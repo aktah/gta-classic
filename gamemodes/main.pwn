@@ -31,6 +31,7 @@ native WP_Hash(buffer[], len, const str[]);
 
 #include <utils>
 #include <account>
+#include <player>
 
 main () {}
 
