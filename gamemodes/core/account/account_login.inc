@@ -38,7 +38,7 @@ public Account_Login(playerid, dialogid, response, listitem, string:inputtext[])
 
         mysql_format(MySQL_GetHandle(), query, sizeof(query), 
         "\
-            SELECT * FROM `accounts` WHERE `username` = '%e' AND `password` = '%s' LIMIT 1\
+            SELECT * FROM `players` WHERE `username` = '%e' AND `password` = '%s' LIMIT 1\
         ", 
             Player_Name(playerid), 
             buffer

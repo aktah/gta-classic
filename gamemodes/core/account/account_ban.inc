@@ -85,7 +85,7 @@ public OnPlayerPrepareToConnect(playerid) {
 
 	mysql_format(MySQL_GetHandle(), query, sizeof query, 
     "\
-        SELECT * FROM `accounts` WHERE `username` = '%e' LIMIT 1\
+        SELECT * FROM `players` WHERE `username` = '%e' LIMIT 1\
     ", 
         Player_Name(playerid)
     );

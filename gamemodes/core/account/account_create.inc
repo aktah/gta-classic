@@ -26,7 +26,7 @@ public Account_InsertToDatabase(playerid, dialogid, response, listitem, string:i
         WP_Hash(buffer, sizeof(buffer), inputtext);
         mysql_format(MySQL_GetHandle(), query, sizeof query, 
         "\
-            INSERT INTO `accounts` (`username`, `password`, `date_reg`, `time_reg`, `ip`) \
+            INSERT INTO `players` (`username`, `password`, `date_reg`, `time_reg`, `ip`) \
             VALUES \
             ('%e', '%s', '%e', '%e', '%e')\
         ", 
