@@ -30,11 +30,11 @@ public Account_InsertToDatabase(playerid, dialogid, response, listitem, string:i
             VALUES \
             ('%e', '%s', '%e', '%e', '%e')\
         ", 
-            Player_Name(playerid), 
+            Player_GetName(playerid), 
             buffer, 
             Date_Get(), 
             Time_Get(),
-            Player_Ip(playerid)
+            Player_GetIP(playerid)
         );
         mysql_tquery(MySQL_GetHandle(), query, "Account_Create", "d", playerid);
     }
@@ -48,6 +48,7 @@ forward Account_Create(playerid);
 public Account_Create(playerid)
 {
 	Player_SetAccountID(playerid, cache_insert_id());
+    CallLocalFunction("OnPlayerRegister", "i", playerid);
 	Account_PromptLogin(playerid);
 	return 1;
 }

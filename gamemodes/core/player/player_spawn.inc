@@ -27,9 +27,9 @@ hook OnPlayerSpawn(playerid) {
         UID: %d | DATE: %s | TIME: %s | IP: %s\
     ", 
         Player_GetAccountID(playerid), 
-        Player_GetDateReg(playerid), 
-        Player_GetTimeReg(playerid), 
-        Player_GetIPReg(playerid)
+        Player_GetAccountDate(playerid), 
+        Player_GetAccountTime(playerid), 
+        Player_GetAccountIP(playerid)
     );
     return 1;
 }

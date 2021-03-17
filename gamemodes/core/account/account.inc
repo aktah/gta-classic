@@ -1,5 +1,7 @@
 forward OnPlayerLogin(playerid);
+forward OnPlayerRegister(playerid);
 
+#include <account_stats>
 #include <account_ban>
 #include <account_create>
 #include <account_login>
@@ -7,47 +9,47 @@ forward OnPlayerLogin(playerid);
 #include <YSI_Coding\y_hooks>
 
 static
-    Player_UID[MAX_PLAYERS],
-    Player_DateReg[MAX_PLAYERS][11],
-    Player_TimeReg[MAX_PLAYERS][9],
-    Player_IPReg[MAX_PLAYERS][16];
+    PlayerUID[MAX_PLAYERS],
+    PlayerDate[MAX_PLAYERS][11],
+    PlayerTime[MAX_PLAYERS][9],
+    PlayerIP[MAX_PLAYERS][16];
 
 hook OnPlayerConnect(playerid) {
-    Player_UID[playerid]            = 0;
-    Player_DateReg[playerid][0]     = EOS;
-    Player_TimeReg[playerid][0]     = EOS;
-    Player_IPReg[playerid][0]       = EOS;
+    PlayerUID[playerid]            = 0;
+    PlayerDate[playerid][0]     = EOS;
+    PlayerTime[playerid][0]     = EOS;
+    PlayerIP[playerid][0]       = EOS;
     return 1;
 }
 
 stock Player_SetAccountID(playerid, value) {
-    return Player_UID[playerid] = value;
+    return PlayerUID[playerid] = value;
 }
 
 stock Player_GetAccountID(playerid) {
-    return Player_UID[playerid];
+    return PlayerUID[playerid];
 }
 
-stock Player_GetDateReg(playerid) {
-    return Player_DateReg[playerid];
+stock Player_GetAccountDate(playerid) {
+    return PlayerDate[playerid];
 }
 
-stock Player_SetDateReg(playerid, const date[]) {
-    return format(Player_DateReg[playerid], 11, date);
+stock Player_SetAccountDate(playerid, const date[]) {
+    return format(PlayerDate[playerid], 11, date);
 }
 
-stock Player_GetTimeReg(playerid) {
-    return Player_TimeReg[playerid];
+stock Player_GetAccountTime(playerid) {
+    return PlayerTime[playerid];
 }
 
-stock Player_SetTimeReg(playerid, const time[]) {
-    return format(Player_TimeReg[playerid], 9, time);
+stock Player_SetAccountTime(playerid, const time[]) {
+    return format(PlayerTime[playerid], 9, time);
 }
 
-stock Player_GetIPReg(playerid) {
-    return Player_IPReg[playerid];
+stock Player_GetAccountIP(playerid) {
+    return PlayerIP[playerid];
 }
 
-stock Player_SetIPReg(playerid, const ip[]) {
-    return format(Player_IPReg[playerid], 16, ip);
+stock Player_SetAccountIP(playerid, const ip[]) {
+    return format(PlayerIP[playerid], 16, ip);
 }

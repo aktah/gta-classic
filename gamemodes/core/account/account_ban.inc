@@ -24,7 +24,7 @@ timer Ban_PrepareCheck[500](playerid) {
     "\
         SELECT * FROM `bans` WHERE `username` = '%e' LIMIT 1\
     ", 
-        Player_Name(playerid)
+        Player_GetName(playerid)
     );
 	mysql_tquery(MySQL_GetHandle(), query, "OnPlayerBanned", "d", playerid);
 }
@@ -63,7 +63,7 @@ public OnPlayerBanned(playerid) {
         ", 
             banName, 
             banIP, 
-            Player_Ip(playerid), 
+            Player_GetIP(playerid), 
             banAdmin, 
             banReason, 
             banDate, 
@@ -87,7 +87,7 @@ public OnPlayerPrepareToConnect(playerid) {
     "\
         SELECT * FROM `players` WHERE `username` = '%e' LIMIT 1\
     ", 
-        Player_Name(playerid)
+        Player_GetName(playerid)
     );
 	mysql_tquery(MySQL_GetHandle(), query, "OnPlayerConnected", "d", playerid);
     return 1;

@@ -40,7 +40,7 @@ public Account_Login(playerid, dialogid, response, listitem, string:inputtext[])
         "\
             SELECT * FROM `players` WHERE `username` = '%e' AND `password` = '%s' LIMIT 1\
         ", 
-            Player_Name(playerid), 
+            Player_GetName(playerid), 
             buffer
         );
         mysql_tquery(MySQL_GetHandle(), query, "Account_LoginAttemps", "d", playerid);
@@ -93,9 +93,9 @@ hook OnPlayerLogin(playerid) {
     cache_get_value_name(0, "time_reg", time, 9);
     cache_get_value_name(0, "ip", ip, 16);
 
-    Player_SetDateReg(playerid, date);
-    Player_SetTimeReg(playerid, time);
-    Player_SetIPReg(playerid, ip);
+    Player_SetAccountDate(playerid, date);
+    Player_SetAccountTime(playerid, time);
+    Player_SetAccountIP(playerid, ip);
 
     ClearPlayerChat(playerid, 20);
     SendClientMessage(playerid, COLOR_YELLOW, "ยินดีต้อนรับเข้าสู่ "SERVER_NAME" เวอร์ชั่น: "SERVER_VERSION"");
